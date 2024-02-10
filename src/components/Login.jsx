@@ -20,9 +20,11 @@ const Login = () => {
             console.log(response.data)
             if(response.data.status==="success")
             {
-                response.data.userData._id
                 alert("login success")
-                navigate("/add")
+                console.log(response.data.userData._id)
+                
+                
+                // navigate("/add")
             }
             else{
                 alert("invalid credentials")
