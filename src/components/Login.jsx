@@ -1,34 +1,41 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const[input,setInput]= new useState([
+
+    const[input,setInput]=useState([
         {
             email:"",
-            password:""
+            password:"",
         }
     ])
     const inputHandler=(event)=>{
         setInput({...input,[event.target.name]:event.target.value})
     }
-    const readValues=()=>{
-axios.post("http://localhost:3001/api/registeration/login",input).then(
-    (response)=>{
-        console.log(response.data)
-        if (response.data.status==="success")
-        {
-            alert("login success")
-        }
-        else{
-            alert("invalid credentials")
-        }
+    const navigate=useNavigate()
+    const readvalues=()=>{
+        console.log(input)
+        axios.post("http://localhost:3001/api/registeration/login",input).then((response)=>{
+            console.log(response.data)
+            if(response.data.status==="success")
+            {
+                alert("login success")
+                console.log(response.data.userData._id)
+                
+                
+                // navigate("/add")
+            }
+            else{
+                alert("invalid credentials")
+            }
+
+        })
     }
-)
-    }
+    
   return (
-    <div className='data my-5'>
-       <h4 style={{textAlign:'center'}}><u>LOGIN</u> </h4>
+    <div className="data my-3" >
+        <h4 style={{textAlign:'center'}}><u>LOGIN</u> </h4>
         <br></br>
       <div className="container">
         <div className="row">
@@ -48,7 +55,7 @@ axios.post("http://localhost:3001/api/registeration/login",input).then(
                     <input type="password" className="form-control" name='password' value={input.password} onChange={inputHandler}/>
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                    <button className="btn btn-success " onClick={readValues}>Login</button>
+                    <button className="btn btn-success" onClick={readvalues}>Login</button>
                 </div>
             </div>
             <br></br>
