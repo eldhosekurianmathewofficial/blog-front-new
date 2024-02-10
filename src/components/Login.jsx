@@ -1,4 +1,6 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     const[input,setInput]= new useState([
@@ -46,7 +48,7 @@ axios.post("http://localhost:3001/api/registeration/login",input).then(
                     <input type="password" className="form-control" name='password' value={input.password} onChange={inputHandler}/>
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                    <button className="btn btn-success" onClick={readValues}>Login</button>
+                    <button className="btn btn-success " onClick={readValues}>Login</button>
                 </div>
             </div>
             <br></br>
