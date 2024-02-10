@@ -23,7 +23,7 @@ const NavBar = () => {
             <ul class="navbar-nav">
              
               <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/add">
                   Add Post
                 </a>
               </li>

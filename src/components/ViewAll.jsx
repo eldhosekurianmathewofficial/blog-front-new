@@ -3,6 +3,7 @@ import axios from "axios";
 
 const ViewAll = () => {
     const [output, setOutput] = useState([]);
+    
 
     const getData = () => {
         axios.get("http://localhost:3001/api/post/viewall").then(
