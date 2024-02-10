@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const AddPost = () => {
+    const navigate = useNavigate();
     const [input, setInput] = new useState(
         {
             userId:sessionStorage.getItem("userId"),
@@ -12,6 +14,9 @@ const AddPost = () => {
 
     const inputHandler = (event) => {
         setInput({ ...input, [event.target.name]: event.target.value })
+    }
+    const viewMinePage = () => {
+        navigate('/viewmine'); 
     }
     const readValues = () => {
         console.log(input)
@@ -39,6 +44,7 @@ const AddPost = () => {
         })
     }
 
+
     return (
         <div>
 
@@ -60,15 +66,23 @@ const AddPost = () => {
                                 <button className="btn btn-danger" onClick={readValues}>Submit</button>
 
                             </div>
+<br></br>
+                            <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+
+                                <button className="btn btn-success" onClick={viewMinePage}> View my Posts</button>
+
+                            </div>
 
                         </div>
 
                     </div>
                 </div>
             </div>
+            
 
         </div>
     )
 }
+
 
 export default AddPost
