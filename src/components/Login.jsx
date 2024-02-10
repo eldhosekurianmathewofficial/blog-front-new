@@ -22,9 +22,9 @@ const Login = () => {
             {
                 alert("login success")
                 console.log(response.data.userData._id)
+                sessionStorage.setItem("userId",response.data.userData._id)
                 
-                
-                // navigate("/add")
+                navigate("/add")
             }
             else{
                 alert("invalid credentials")
